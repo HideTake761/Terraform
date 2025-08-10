@@ -1,0 +1,76 @@
+name: CI/CD Pipeline for Django App
+
+on: # onで、ワークフロー(jobs)実行のトリガーを指定
+  push:
+    branches:
+      - main # mainブランチへのプッシュでワークフローをトリガー
+    # 1人で開発している場合、とくに指定しなくてもpush先はmain branch。
+    # GitHubのディレクトリ・ファイルの左上に main 1 Branchとか書いてある
+    paths: # 特定のファイルやディレクトリに変更があった場合のみワークフローをトリガーするように制限
+      - 'api_server/**'      # Djangoプロジェクトのコードパス
+      - 'myapi/**'          # Djangoアプリケーションのコードパス
+      - 'requirements.txt'
+      - 'Dockerfile'
+      - '.github/workflows/docker-build.yml' # このワークフローファイル自身
+
+jobs:
+  run-tests: # ジョブIDを定義
+    runs-on: ubuntu-latest # テストを実行するマシン環境を指定
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # リポジトリのコードをチェックアウト
+        # GitHub Actionsの実行環境(仮想マシン)に、現在のGitHubリポジトリのソースコードを
+        # ダウンロードして展開する。何もしないと対象のリポジトリのコードを読み込まない
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13' # Djangoアプリケーションが使用するPythonバージョンに合わせる
+
+      - name: Install Python dependencies
+        run: | # requirements.txtから依存関係をGitHub Actionsの検証環境(仮想マシン)上にインストール
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Django tests
+        env:
+          DJANGO_SETTINGS_MODULE: myproject.settings # Djangoのsettingsファイルを指定
+        run: | # このYAMLファイルがあるDjangoプロジェクトのテストを実行。
+          python manage.py test
+        # testの後にアプリ名を入れることで、テスト対象を絞ることができる
+
+  build-and-push:
+    needs: run-tests # run-tests ジョブが成功した場合のみ、このジョブを実行
+    if: success() # run-tests ジョブが成功した場合にのみ実行することを明示
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3 # GitHub Actionsにおける公式のDocker関連アクション
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }} # GitHub Secretsの設定:
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3 # Docker Buildx(高機能ビルドツール)をセットアップ
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5 # Dockerイメージのビルドとプッシュを行う
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: | # GitHub Secretsからユーザー名を動的に取得
+            ${{ secrets.DOCKER_USERNAME }}/django-rest-framework:latest
+            ${{ secrets.DOCKER_USERNAME }}/django-rest-framework:${{ github.sha }}
+          # django-rest-framework:Docker Hubでのイメージ名
+          # ${{github.sha}}:GitHub Actionsの環境変数で、特定のコミットを参照するために
+          # 自動的に提供される値(手動で記入しなくていい)。
+          # GitHub Actionsのキャッシュ機能を利用するように設定
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
