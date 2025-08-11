@@ -66,8 +66,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: | # GitHub Secretsからユーザー名を動的に取得
-            ${{ secrets.DOCKER_USERNAME }}/django-rest-framework:latest
-            ${{ secrets.DOCKER_USERNAME }}/django-rest-framework:${{ github.sha }}
+            "${{ secrets.DOCKER_USERNAME }}/django-rest-framework:latest"
+            "${{ secrets.DOCKER_USERNAME }}/django-rest-framework:${{ github.sha }}"
           # django-rest-framework:Docker Hubでのイメージ名
           # ${{github.sha}}:GitHub Actionsの環境変数で、特定のコミットを参照するために
           # 自動的に提供される値(手動で記入しなくていい)。
