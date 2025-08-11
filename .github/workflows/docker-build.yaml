@@ -6,12 +6,12 @@ on: # onで、ワークフロー(jobs)実行のトリガーを指定
       - main # mainブランチへのプッシュでワークフローをトリガー
     # 1人で開発している場合、とくに指定しなくてもpush先はmain branch。
     # GitHubのディレクトリ・ファイルの左上に main 1 Branchとか書いてある
-    paths: # 特定のファイルやディレクトリに変更があった場合のみワークフローをトリガーするように制限
-      - 'api_server/**'      # Djangoプロジェクトのコードパス
-      - 'myapi/**'          # Djangoアプリケーションのコードパス
-      - 'requirements.txt'
-      - 'Dockerfile'
-      - '.github/workflows/docker-build.yml' # このワークフローファイル自身
+    # paths: # 特定のファイルやディレクトリに変更があった場合のみワークフローをトリガーするように制限
+    #   - 'api_server/**'      # Djangoプロジェクトのコードパス
+    #   - 'myapi/**'          # Djangoアプリケーションのコードパス
+    #   - 'requirements.txt'
+    #   - 'Dockerfile'
+    #   - '.github/workflows/docker-build.yml' # このワークフローファイル自身
 
 jobs:
   run-tests: # ジョブIDを定義
