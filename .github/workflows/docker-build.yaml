@@ -11,7 +11,7 @@ on: # onで、ワークフロー(jobs)実行のトリガーを指定
       - 'myapi/**'          # Djangoアプリケーションのコードパス
       - 'requirements.txt'
       - 'Dockerfile'
-      - '.github/workflows/docker-build.yml' # このワークフローファイル自身
+      - '.github/workflows/docker-build.yaml' # このワークフローファイル自身
 
 jobs:
   run-tests: # ジョブIDを定義
