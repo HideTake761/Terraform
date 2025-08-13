@@ -70,7 +70,6 @@ TEMPLATES = [
     },
 ]
 
-# 自分のやりたいことだけなら、この設定は必須ではない
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
      # DEFAULT_RENDERER_CLASSES:APIのレスポンスをどのような形式で表示するかを制御
