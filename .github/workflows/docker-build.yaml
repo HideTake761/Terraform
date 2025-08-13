@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Django tests
         env:
-          DJANGO_SETTINGS_MODULE: api_server.settings # Djangoのsettingsファイルを指定
+          DJANGO_SETTINGS_MODULE: api_server.settings
         run: | # このYAMLファイルがあるDjangoプロジェクトのテストを実行。
           python manage.py test
         # testの後にアプリ名を入れることで、テスト対象を絞ることができる
