@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "myapi",
     "rest_framework",
-    "django_filters", # REST APIで特定アイテムのGET・変更・削除を商品名で行うために必要
+    "django_filters", # Enables REST API endpoints to GET, UPDATE, and DELETE items by product name
 ]
 
 MIDDLEWARE = [
@@ -72,14 +72,13 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
-     # DEFAULT_RENDERER_CLASSES:APIのレスポンスをどのような形式で表示するかを制御
         'rest_framework.renderers.JSONRenderer',
-        # JSONRendererが有効だと、APIのレスポンスがJSONフォーマットになる
+        # JSONRenderer:Sets the API to render responses in JSON format
         'rest_framework.renderers.BrowsableAPIRenderer',
-        # BrowsableAPIRendererを追加すれば、ブラウザからAPIを試せるデバッグ機能が使える
+        # BrowsableAPIRenderer:Enables API testing directly from the browser using the browsable API
     ],
     'DEFAULT_FILTER_BACKENDS': [
-    # DEFAULT_FILTER_BACKENDS:APIでデータをフィルタリングする際のデフォルトのバックエンドを定義
+    # DEFAULT_FILTER_BACKENDS:Defines the default filter backends for the API
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
 
