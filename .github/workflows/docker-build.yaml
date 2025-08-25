@@ -1,45 +1,40 @@
 name: CI/CD Pipeline for Django App
 
-on: # onで、ワークフロー(jobs)実行のトリガーを指定
+on:
   push:
     branches:
-      - main # mainブランチへのプッシュでワークフローをトリガー
-    # 1人で開発している場合、とくに指定しなくてもpush先はmain branch。
-    # GitHubのディレクトリ・ファイルの左上に main 1 Branchとか書いてある
-    paths: # 特定のファイルやディレクトリに変更があった場合のみワークフローをトリガーするように制限
-      - 'api_server/**'      # Djangoプロジェクトのコードパス
-      - 'myapi/**'          # Djangoアプリケーションのコードパス
+      - main
+    paths:
+      - 'api_server/**'      # Django project path
+      - 'myapi/**'          # Django application path
       - 'requirements.txt'
       - 'Dockerfile'
-      - '.github/workflows/docker-build.yaml' # このワークフローファイル自身
+      - '.github/workflows/docker-build.yaml'
 
 jobs:
-  run-tests: # ジョブIDを定義
-    runs-on: ubuntu-latest # テストを実行するマシン環境を指定
+  run-tests:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # リポジトリのコードをチェックアウト
-        # GitHub Actionsの実行環境(仮想マシン)に、現在のGitHubリポジトリのソースコードを
-        # ダウンロードして展開する。何もしないと対象のリポジトリのコードを読み込まない
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13' # Djangoアプリケーションが使用するPythonバージョンに合わせる
+          python-version: '3.13'
 
       - name: Install Python dependencies
-        run: | # requirements.txtから依存関係をGitHub Actionsの検証環境(仮想マシン)上にインストール
+        run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Django tests
         env:
           DJANGO_SETTINGS_MODULE: api_server.settings
-        run: | # このYAMLファイルがあるDjangoプロジェクトのテストを実行。
+        run: |
           python manage.py test
-        # testの後にアプリ名を入れることで、テスト対象を絞ることができる
-
+  
   build-and-push:
     needs: run-tests # run-tests ジョブが成功した場合のみ、このジョブを実行
     if: success() # run-tests ジョブが成功した場合にのみ実行することを明示
