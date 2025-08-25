@@ -1,4 +1,5 @@
 Purpose & Usage Context:  
+
 This API server records and stores product names(product) and prices(price) as a part of a microservice architecture.  
 By developing with Docker and pushing the image to Docker Hub, any team member can verify the application in the same environment.
 
@@ -40,6 +41,7 @@ Please see<br>
 https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
 <br>
 for more detail.
+
 
 
 
