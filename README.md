@@ -1,3 +1,7 @@
+Purpose & Usage Context:  
+This API server records and stores product names(product) and prices(price) as a part of a microservice architecture.  
+By developing with Docker and pushing the image to Docker Hub, any team member can verify the application in the same environment.
+
 Environment:
 - Host OS: Windows 11 Home 24H2  
 - Visual Studio Code  
@@ -9,7 +13,6 @@ Environment:
 - SQLite, sqlparse 0.5.3  
 
 API server Functions:
-- Records and stores product names(product) and prices(price)
 - No authentication
 - Searchable by product name
 - No pagination
@@ -37,5 +40,6 @@ Please see<br>
 https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
 <br>
 for more detail.
+
 
 
