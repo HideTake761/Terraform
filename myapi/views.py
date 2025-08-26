@@ -4,12 +4,8 @@ from .serializers import ItemSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 class ItemViewSet(viewsets.ModelViewSet):
-    queryset = Item.objects.all() # Itemテーブルのレコードをすべて取り出す
+    queryset = Item.objects.all()
     serializer_class = ItemSerializer
-    # シリアライザーとしてItemSerializerを使用するよう指定
-    # シリアライザー:
-    # モデルのデータをJSON形式に変換したり、JSONデータをモデルインスタンスに
-    # 変換したりするもの
     filterset_fields = ['product']
     # REST APIで特定アイテムのGET・変更・削除を商品名で行えるようにするため
     filter_backends = [DjangoFilterBackend]
