@@ -7,7 +7,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     filterset_fields = ['product']
-    # REST APIで特定アイテムのGET・変更・削除を商品名で行えるようにするため
+    # Enables REST API endpoints to GET, UPDATE, and DELETE items by product name
     filter_backends = [DjangoFilterBackend]
-    # Django REST Frameworkでfilter_fieldsを使う場合、DjangoFilterBackendが
-    # フィルタリングをサポートするために設定されている必要がある。
+    # Set the filter backend to enable query parameter filtering
+    
