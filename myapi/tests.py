@@ -6,7 +6,6 @@ from myapi.models import Item
 class ItemAPITestCase(APITestCase):
 
     def setUp(self):
-        # テスト用のデータを2件作成
         self.item1 = Item.objects.create(product='Apple', price=100)
         self.item2 = Item.objects.create(product='Banana', price=50)
         self.list_url = reverse('item-list')
@@ -49,10 +48,10 @@ class ItemAPITestCase(APITestCase):
         self.assertFalse(Item.objects.filter(id=self.item2.id).exists())
 
     def test_create_invalid_item(self):
-        data = {'product': '', 'price': -50}  # 無効なデータ（空の名前、マイナス価格）
+        data = {'product': '', 'price': -50}
         response = self.client.post(self.list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_get_nonexistent_item(self):
-        response = self.client.get(self.detail_url(9999))  # 存在しないID
+        response = self.client.get(self.detail_url(9999))
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
