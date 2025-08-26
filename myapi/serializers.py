@@ -8,5 +8,5 @@ class ItemSerializer(serializers.ModelSerializer):
     
     def validate_product(self, value):
         if not value.strip():
-            raise serializers.ValidationError("商品名は空にできません")
+            raise serializers.ValidationError("Product name cannot be empty.")
         return value
