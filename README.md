@@ -37,11 +37,5 @@ CI/CD Pipeline (via GitHub Actions):
 - CD: If tests pass, it builds a Docker image and pushes it to Docker Hub  
 https://hub.docker.com/r/hideto861/django-rest-framework
 
-Please see<br>
-https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
-<br>
-for more detail.
-
-
-
-
+   Please see the below for more detail.<br>
+   https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
