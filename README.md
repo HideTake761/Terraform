@@ -24,6 +24,7 @@ Setting Up Volume Mounts from Windows 11 to a Docker Container(in Windows PC):
 <br>
 Unit Test: 
 https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/myapi/tests.py
+<br>Current test coverage measured by **coverage.py** is **97%**.
 <br>
 <br>
 REST API Request Test:<br>
@@ -39,3 +40,4 @@ https://hub.docker.com/r/hideto861/django-rest-framework
 
    Please see the below for more detail.<br>
    https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
+
