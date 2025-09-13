@@ -11,7 +11,9 @@ Environment:
 - Docker: version 28.3.2  
 - Python 3.9.16  
 - Django 5.2.5, Django REST Framework 3.16.1, Django-filter 25.1  
+Django REST Framework was chosen based on existing experience with Django, enabling quicker development and easier long-term maintenance compared to adopting a new framework like FastAPI.
 - SQLite, sqlparse 0.5.3  
+SQLite was selected because it is Django’s default RDBMS and easy to set up. More advanced RDBMSs such as MySQL or PostgreSQL were considered unnecessary due to the limited scale of the data handled in this project.
 
 API server Functions:
 - No authentication
@@ -33,7 +35,8 @@ Please see https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/R
 <br>
 <br>
   
-CI/CD Pipeline (via GitHub Actions):
+CI/CD Pipeline (via GitHub Actions):  
+GitHub Actions was selected due to deep integration with the GitHub ecosystem. It can be configured through the GitHub UI and a YAML file which makes it much simpler to implement than alternatives like Jenkins or CircleCI.
 - Trigger: Push to the main branch
 - CI: Runs unit tests automatically
 - CD: If tests pass, it builds a Docker image and pushes it to Docker Hub  
@@ -41,5 +44,6 @@ https://hub.docker.com/r/hideto861/django-rest-framework
 
    Please see the below for more detail.<br>
    https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
+
 
 
