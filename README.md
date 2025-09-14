@@ -1,6 +1,7 @@
 Purpose & Usage Context:  
 
-This API server records and stores product names(product) and prices(price) as a part of a microservice architecture.  
+This API server provides functionality for storing and retrieving data from the front end.  
+Designed as a microservice, it can be scaled and deployed independently, minimizing any impact on the front end.  
 By developing with Docker and pushing the image to Docker Hub, any team member can verify the application in the same environment.
 
 Environment:
@@ -16,6 +17,7 @@ Environment:
 **SQLite** was selected because it is Django’s default RDBMS and easy to set up. More advanced RDBMSs such as **MySQL** or **PostgreSQL** were considered unnecessary due to the limited scale of the data handled in this project.
 
 API server Functions:
+- records and stores product names(product) and prices(price)
 - No authentication
 - Searchable by product name
 - No pagination
@@ -44,6 +46,7 @@ https://hub.docker.com/r/hideto861/django-rest-framework
 
    Please see the below for more detail.<br>
    https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
+
 
 
 
