@@ -165,18 +165,16 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],
+            #'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
         },
         'myapi.middleware': {
-            'handlers': ['console', 'file'],
+            #'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': False,
         },
     },
 }
-
-# for passing CI/CD tests
-if 'test' in sys.argv:
-    LOGGING['root']['handlers'] = ['console']
