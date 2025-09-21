@@ -12,6 +12,7 @@ Environment:
 - Docker: version 28.3.2  
 - Python 3.9.16  
 - Django 5.2.5, Django REST Framework 3.16.1, Django-filter 25.1  
+- json-log-formatter 1.1.1, coverage 7.10.6  
 **Django REST Framework** was chosen based on existing experience with **Django**, enabling quicker development and easier long-term maintenance compared to adopting a new framework like **FastAPI**.
 - SQLite, sqlparse 0.5.3  
 **SQLite** was selected because it is Django’s default RDBMS and easy to set up. More advanced RDBMSs such as **MySQL** or **PostgreSQL** were considered unnecessary due to the limited scale of the data handled in this project.
@@ -22,6 +23,16 @@ API server Functions:
 - Searchable by product name
 - No pagination
 
+Logging:
+- All HTTP request and response logs are captured in myapi/middleware.py.
+- Log format: JSON
+- Output destination:
+  - Console
+  - logs/api_server.log
+- LogLevel:
+  - Django: INFO
+  - myapi.middleware: DEBUG
+
 Setting Up Volume Mounts from Windows 11 to a Docker Container(in Windows PC):
 
 >docker run -it -p 8000:8000 -v C:\Users\HideTake761\Django\api_server:/app --name api_server python:3.13-slim bash
@@ -29,7 +40,7 @@ Setting Up Volume Mounts from Windows 11 to a Docker Container(in Windows PC):
 Unit Test: 
 https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/myapi/tests.py
   
-Current test coverage measured by **coverage.py** is **97%**.
+Current test coverage measured by **coverage.py** is **98%**.
 <br>
 <br>
 REST API Request Test:<br>
