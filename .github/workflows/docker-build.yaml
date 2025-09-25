@@ -66,3 +66,36 @@ jobs:
 
           cache-from: type=gha
           cache-to: type=gha,mode=max
+  
+  deploy-to-ecs:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: success()
+
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      SERVICE_NAME: api-server         # >copilot svc ls
+      ENV_NAME: test                 # >copilot env ls
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Install AWS Copilot CLI
+        run: |
+          COPILOT_VERSION="v1.34.1"
+          curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux
+          chmod +x copilot
+          sudo mv copilot /usr/local/bin/copilot
+
+      - name: Deploy to ECS using Copilot
+        run: |
+          copilot deploy --name $SERVICE_NAME --env $ENV_NAME
+
