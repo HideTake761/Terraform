@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     "django_filters", # Enables REST API endpoints to GET, UPDATE, and DELETE items by product name
 ]
 
+# HTTPリクエストがDjangoアプリに入ってきたときの処理の流れ(パイプライン)を定義するための項目。
+# ここの後URLルーティングにしたがい適切なviews.pyに渡される。だから最後にLoggingMiddlewareを書く。
+# Djangoのミドルウェアは、リクエストがViews.pyに到達する前と、レスポンスがブラウザに返される前に
+# 処理を挟み込むための「層」のようなもの。
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -75,6 +79,7 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
+    # DEFAULT_RENDERER_CLASSES:APIのレスポンスをどのような形式で表示するかを制御    
         'rest_framework.renderers.JSONRenderer',
         # JSONRenderer:Sets the API to render responses in JSON format
         'rest_framework.renderers.BrowsableAPIRenderer',
@@ -83,6 +88,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
     # DEFAULT_FILTER_BACKENDS:Defines the default filter backends for the API
         'django_filters.rest_framework.DjangoFilterBackend',
+        # views.pyにもDjangoFilterBackendの設定必要
     ],
 
 }
@@ -145,24 +151,27 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    # Formatters(フォーマッター):ログをどのような形式で出力するか
     'formatters': {
         'json': {
             '()': json_log_formatter.JSONFormatter,
         },
     },
+    # Handlers(ハンドラー):ログをどこに出力するか
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'INFO', # INFOレベル以上のログをコンソールに出力
             'class': 'logging.StreamHandler',
             'formatter': 'json',
         },
         'file': {
-            'level': 'DEBUG',
+            'level': 'DEBUG', # DEBUGレベル以上のログをファイルに出力
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'api_server.log'),
             'formatter': 'json',
         },
     },
+    #Loggers(ロガー):アプリケーションコードからログを発行するための窓口
     'loggers': {
         'django': {
             #'handlers': ['console', 'file'],

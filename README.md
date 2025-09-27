@@ -48,17 +48,24 @@ Please see https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/R
 <br>
 <br>
   
+AWS:  
+- This architecture was built using **AWS Copilot CLI**
+- Compute: ECS(Fargate)
+**Fargate** was selected with future scalability in mind
+- Container Management: ECR
+- Networking: ALB(Application Load Balancer), VPC
+**ALB** was adopted for load balancing. Due to constraints of the **Copilot CLI**, detailed **VPC** configurations rely on the default settings
+- Monitoring & Logging: CloudWatch Logs, Alarm  
+
 CI/CD Pipeline (via GitHub Actions):  
 **GitHub Actions** was selected due to deep integration with the GitHub ecosystem. It can be configured through the GitHub UI and a YAML file which makes it much simpler to implement than alternatives like **Jenkins** or **CircleCI**.
-- Trigger: Push to the main branch
+- Trigger: Push, pull request & merge to the main branch
 - CI: Runs unit tests automatically
-- CD: If tests pass, it builds a Docker image and pushes it to Docker Hub  
-https://hub.docker.com/r/hideto861/django-rest-framework
+- CD:  
+  - If tests pass, it builds a Docker image and pushes it to Docker Hub  
+    https://hub.docker.com/r/hideto861/django-rest-framework  
 
-   Please see the below for more detail.<br>
-   https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
+  - After the image is pushed, it is deployed to AWS ECS (Fargate) using AWS Copilot CLI  
 
-
-
-
-
+Please see the below for more detail.<br>
+https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 

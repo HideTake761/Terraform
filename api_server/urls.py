@@ -19,8 +19,13 @@ from django.urls import path, include
 from .views import health_check
 
 urlpatterns = [
+    # path(アクセスするアドレス, 呼び出す処理)
     path("admin/", admin.site.urls),
+    # admin.site.urls:管理画面のURL構成を自動的に生成。
+    # /admin/にアクセスするとDjangoの管理画面が表示される
     path('api/', include('myapi.urls')),
     # Includes API URLs from 'myapi/urls.py'
+    # api/にアクセスしたら、myapi/urls.pyで指定されているURLルーティングに従う
+    # include():他のURLconf(URL設定ファイル)をインポートするために使われる
     path('healthz', health_check),
 ]
