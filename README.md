@@ -16,6 +16,7 @@ Environment:
 **Django REST Framework** was chosen based on existing experience with **Django**, enabling quicker development and easier long-term maintenance compared to adopting a new framework like **FastAPI**.
 - SQLite, sqlparse 0.5.3  
 **SQLite** was selected because it is Django’s default RDBMS and easy to set up. More advanced RDBMSs such as **MySQL** or **PostgreSQL** were considered unnecessary due to the limited scale of the data handled in this project.
+- AWS Copilot CLI v1.34.1
 
 API server Functions:
 - records and stores product names(product) and prices(price)
@@ -50,10 +51,10 @@ Please see https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-A
   
 AWS:  
 - This architecture was built using **AWS Copilot CLI**
-- Compute: ECS(Fargate)
+- Compute: ECS(Fargate)  
 **Fargate** was selected with future scalability in mind
 - Container Management: ECR
-- Networking: ALB(Application Load Balancer), VPC
+- Networking: ALB(Application Load Balancer), VPC  
 **ALB** was adopted for load balancing. Due to constraints of the **Copilot CLI**, detailed **VPC** configurations rely on the default settings
 - Monitoring & Logging: CloudWatch Logs, Alarm  
 
@@ -69,5 +70,6 @@ CI/CD Pipeline (via GitHub Actions):
 
 - Please see the below for more detail.<br>
 https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate/blob/main/.github/workflows/docker-build.yaml 
+
 
 
