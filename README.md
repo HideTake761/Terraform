@@ -67,5 +67,6 @@ CI/CD Pipeline (via GitHub Actions):
 
   - After the image is pushed, it is deployed to AWS ECS (Fargate) using AWS Copilot CLI  
 
-Please see the below for more detail.<br>
+- Please see the below for more detail.<br>
 https://github.com/HideTake761/CICD-Django-REST-Framework/blob/main/.github/workflows/docker-build.yaml 
+
