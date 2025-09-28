@@ -56,8 +56,10 @@ AWS:
 - Container Management: ECR
 - Networking: ALB(Application Load Balancer), VPC  
 **ALB** was adopted for load balancing. Due to constraints of the **Copilot CLI**, detailed **VPC** configurations rely on the default settings
-- Monitoring & Logging: CloudWatch Logs, Alarm  
-
+- Monitoring & Logging: CloudWatch Logs, Alarm
+- System Architecture Diagram is below  
+  <img src="./API%20Server%20on%20AWS.jpg" alt="System Architecture Diagram" width="600" />
+ 
 CI/CD Pipeline (via GitHub Actions):  
 **GitHub Actions** was selected due to deep integration with the GitHub ecosystem. It can be configured through the GitHub UI and a YAML file which makes it much simpler to implement than alternatives like **Jenkins** or **CircleCI**.
 - Trigger: Push, pull request & merge to the main branch
@@ -70,6 +72,7 @@ CI/CD Pipeline (via GitHub Actions):
 
 - Please see the below for more detail.<br>
 https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate/blob/main/.github/workflows/docker-build.yaml 
+
 
 
 
