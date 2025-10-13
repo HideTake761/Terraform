@@ -82,7 +82,7 @@ Requires `CAPABILITY_IAM` and `CAPABILITY_AUTO_EXPAND`.
  5. Stack name: `<application-name>-<env-name>-<service-name>-AddonsStack`  
 Includes CloudWatch dashboards, alarms, log groups, and SNS StackSets.  
 
-- Handling `CREATE_FAILED` and `DELETE_FAILED` Issues: 
+- Handling `CREATE_FAILED` and `DELETE_FAILED` Issues:  
 If a stack enters the `DELETE_FAILED` state due to a specific resource such as `DelegateDNSAction` or `HTTPSCert`, especially when the resource failed during creation and does not actually exist, you can successfully delete the stack using the following command.
 > aws cloudformation delete-stack --stack-name \<your-stack-name> --retain-resources <problematic resource logical ID, e.g. `DelegateDNSAction`, `HTTPSCert`> --region \<your-region>
 
@@ -100,6 +100,7 @@ CI/CD Pipeline (via GitHub Actions):
 
 - Please see the below for more detail.<br>
 https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate/blob/main/.github/workflows/docker-build.yaml 
+
 
 
 
