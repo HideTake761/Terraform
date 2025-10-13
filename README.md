@@ -57,6 +57,8 @@ AWS:
 - Networking: ALB(Application Load Balancer), VPC  
 **ALB** was adopted for load balancing. Due to constraints of the **Copilot CLI**, detailed **VPC** configurations rely on the default settings
 - Monitoring & Logging: CloudWatch Logs, Alarm
+- IaC: CloudFormation
+Revise **CloudFormation Templates** created by **Copilot** and re-deploy them. Manage **infrastructure as code** 
 - System Architecture Diagram is below  
   <img src="./API%20Server%20on%20AWS.jpg" alt="System Architecture Diagram" width="600" />
  
@@ -72,6 +74,7 @@ CI/CD Pipeline (via GitHub Actions):
 
 - Please see the below for more detail.<br>
 https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate/blob/main/.github/workflows/docker-build.yaml 
+
 
 
 
