@@ -16,4 +16,6 @@ AWS:
 - Cost Management: AWS Budgets  
 - System Architecture Diagram is below  
   <img src="./AWS ECS.jpg" alt="System Architecture Diagram" width="600" />
-
+<a href="https://www.credly.com/badges/ae2d13dc-3b14-491e-a44a-e47cdbe94b85/public_url">
+  <img src="https://images.credly.com/size/220x220/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" width="150" alt="AWS SAA Badge">
+</a>
