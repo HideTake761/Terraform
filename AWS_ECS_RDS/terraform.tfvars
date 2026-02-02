@@ -1,0 +1,6 @@
+project_name = "api_server"
+environment = "portfolio"
+aws_region      = "ap-northeast-1"
+db_name = "portfolio_postgresql"
+ecs_task_role_arn      = "arn:aws:iam::806186014049:role/ecsTaskRole"
+ecs_execution_role_arn = "arn:aws:iam::806186014049:role/ecsExecutionRole"
