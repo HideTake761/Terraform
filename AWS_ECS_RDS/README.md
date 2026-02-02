@@ -11,11 +11,13 @@ AWS:
 - Container Management: ECR
 - Database: RDS PostgreSQL
 - Networking: ALB(Application Load Balancer), VPC, VPC Endpoint  
+  VPC Endpoints were chosen instead of a NAT Gateway to avoid unnecessary internet traffic. 
 - Monitoring & Logging: CloudWatch Logs, Alarm
 - IaC: Terraform  
 - Cost Management: AWS Budgets  
 - System Architecture Diagram is below  
   <img src="./AWS ECS RDS.jpg" alt="System Architecture Diagram" width="600" />
+
 
 
 
