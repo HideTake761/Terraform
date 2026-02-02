@@ -15,5 +15,6 @@ AWS:
 - IaC: Terraform  
 - Cost Management: AWS Budgets  
 - System Architecture Diagram is below  
-  <img src="./AWS ECS.jpg" alt="System Architecture Diagram" width="600" />
+  <img src="./AWS ECS RDS.jpg" alt="System Architecture Diagram" width="600" />
+
 
