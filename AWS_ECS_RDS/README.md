@@ -18,6 +18,4 @@ AWS:
 - System Architecture Diagram is below  
   <img src="./AWS ECS RDS.jpg" alt="System Architecture Diagram" width="600" />
 
-
-
-
+For better readability, reusability, and maintainability, a single main.tf file will be refactored into separate modules in the future—such as VPC/Network, Compute, and Database layers.
