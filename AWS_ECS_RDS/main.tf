@@ -354,7 +354,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 
 # 標準のExecution Roleポリシーをアタッチ
 # AWSリソースにアクセスするならポリシーの定義は必要(Task Roleも)
-resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy" {
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy_attach" {
   role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
@@ -618,3 +618,4 @@ resource "aws_budgets_budget" "monthly_budget" {
     subscriber_email_addresses = ["example@mail.com"]
   }
 }
+
