@@ -1,7 +1,7 @@
 The infrastructure of [HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate](https://github.com/HideTake761/CI-CD-Django-REST-API-with-Docker-on-AWS-ECS-Fargate).
 
 Environment:
-- Host OS: Windows 11 Home 25H2  
+- Host OS : Windows 11 Home 25H2  
 - Visual Studio Code  1.108.2  
 - Terraform v1.13.4  
 - AWS CLI 2.30.6  
