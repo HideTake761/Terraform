@@ -12,13 +12,13 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "terraform-k8s-go-gcp" # コンソールで作ったバケット名【マスキング！】
+    bucket = "******************" # コンソールで作ったバケット名
     prefix = "terraform/state" # バケット内の保存先フォルダ名(基本はこのままでOK)
   }
 }
 
 provider "google" {
-  project = "project-720026ab-c9ef-46e8-839" # 【マスキング！】
+  project = "project-***************"
   region  = "asia-northeast1"     # 東京リージョン
 }
 
@@ -255,7 +255,7 @@ resource "google_iam_workload_identity_pool_provider" "github_provider" {
 # (指定したリポジトリだけが、このサービスアカウントに変身できるようにする)
 resource "google_service_account_iam_member" "github_actions_sa_binding" {
   # すでにTerraformで作ってあるサービスアカウントを指定
-  service_account_id = "projects/project-720026ab-c9ef-46e8-839/serviceAccounts/terraform-sa@project-720026ab-c9ef-46e8-839.iam.gserviceaccount.com" # 【マスキング！】 
+  service_account_id = "projects/project-*******************/serviceAccounts/*************************************"
   
   # WIFを利用するための決まったロール
   role               = "roles/iam.workloadIdentityUser"
