@@ -15,8 +15,6 @@ GCP:
 - Security & CI/CD: Workload Identity Federation(for GitHub Actions authentication)
 - Monitoring & Logging: Cloud Logging, Cloud Monitoring
 
-TerraformのStateファイルを管理するCloud Storageバケットは、Terraform実行前に手動で作成済みのものを指定しています。
-
 The Cloud Storage bucket for Terraform state files was created manually in the GCP console before running 'terraform apply'.
 
 System Architecture Diagram is below  
