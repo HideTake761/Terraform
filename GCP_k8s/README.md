@@ -18,4 +18,4 @@ GCP:
 The Cloud Storage bucket for Terraform state files was created manually in the GCP console before running 'terraform apply'.
 
 System Architecture Diagram is below  
-  <img src="./GCP Kubernetes.jpg" alt="System Architecture Diagram" width="600" />  
+  <img src="./GCP GKE.jpg" alt="System Architecture Diagram" width="600" />  
